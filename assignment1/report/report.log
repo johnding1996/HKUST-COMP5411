@@ -1,0 +1,305 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.9.15)  1 OCT 2017 22:41
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**report.tex
+(./report.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/13 v1.2b Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/06/17 v1.0e Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count87
+\float@exts=\toks15
+\float@box=\box26
+\@float@everytoks=\toks16
+\@floatcapt=\box27
+) (./report.aux)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count88
+\scratchdimen=\dimen105
+\scratchbox=\box28
+\nofMPsegments=\count89
+\nofMParguments=\count90
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count91
+\MPscratchDim=\dimen106
+\MPnumerator=\count92
+\makeMPintoPDFobject=\count93
+\everyMPtoPDFconversion=\toks18
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 11.
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]\OT1/cmr/bx/n/14.4 Laplacian Smooth-ing on
+ []
+
+<bunny.png, id=1, 1927.2pt x 1084.05pt>
+File: bunny.png Graphic file (type png)
+<use bunny.png>
+Package pdftex.def Info: bunny.png  used on input line 20. on input line 20.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 20
+.
+<bunny_en_15.png, id=2, 1927.2pt x 1084.05pt>
+File: bunny_en_15.png Graphic file (type png)
+<use bunny_en_15.png>
+Package pdftex.def Info: bunny_en_15.png  used on input line 25. on input line 
+25.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 25
+.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 26.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 26.
+<bunny_ec_15.png, id=3, 1927.2pt x 1084.05pt>
+File: bunny_ec_15.png Graphic file (type png)
+<use bunny_ec_15.png>
+Package pdftex.def Info: bunny_ec_15.png  used on input line 30. on input line 
+30.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 30
+.
+<bunny_in_15.png, id=4, 1927.2pt x 1084.05pt>
+File: bunny_in_15.png Graphic file (type png)
+<use bunny_in_15.png>
+Package pdftex.def Info: bunny_in_15.png  used on input line 35. on input line 
+35.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 35
+.
+<bunny_ic_15.png, id=5, 1927.2pt x 1084.05pt>
+File: bunny_ic_15.png Graphic file (type png)
+<use bunny_ic_15.png>
+Package pdftex.def Info: bunny_ic_15.png  used on input line 40. on input line 
+40.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 40
+.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./bunny.png> <./bunny_en_15.png> <./bunny_ec_15.png> <./bunny_in_15.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]\OT1/cmr/bx/n/14.4 Laplacian Smooth-ing on
+ []
+
+<cube_bumpy.png, id=16, 1927.2pt x 1084.05pt>
+File: cube_bumpy.png Graphic file (type png)
+<use cube_bumpy.png>
+Package pdftex.def Info: cube_bumpy.png  used on input line 47. on input line 4
+7.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 47
+.
+<cube_bumpy_en_15.png, id=17, 1927.2pt x 1084.05pt>
+File: cube_bumpy_en_15.png Graphic file (type png)
+<use cube_bumpy_en_15.png>
+Package pdftex.def Info: cube_bumpy_en_15.png  used on input line 52. on input 
+line 52.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 52
+.
+<cube_bumpy_ec_15.png, id=18, 1927.2pt x 1084.05pt>
+File: cube_bumpy_ec_15.png Graphic file (type png)
+<use cube_bumpy_ec_15.png>
+Package pdftex.def Info: cube_bumpy_ec_15.png  used on input line 57. on input 
+line 57.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 57
+.
+<cube_bumpy_in_15.png, id=19, 1927.2pt x 1084.05pt>
+File: cube_bumpy_in_15.png Graphic file (type png)
+<use cube_bumpy_in_15.png>
+Package pdftex.def Info: cube_bumpy_in_15.png  used on input line 62. on input 
+line 62.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 62
+.
+
+Underfull \vbox (badness 2961) has occurred while \output is active []
+
+<cube_bumpy_ic_15.png, id=20, 1927.2pt x 1084.05pt>
+File: cube_bumpy_ic_15.png Graphic file (type png)
+<use cube_bumpy_ic_15.png>
+Package pdftex.def Info: cube_bumpy_ic_15.png  used on input line 67. on input 
+line 67.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 67
+.
+<feline.png, id=21, 1927.2pt x 1084.05pt>
+File: feline.png Graphic file (type png)
+<use feline.png>
+Package pdftex.def Info: feline.png  used on input line 74. on input line 74.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 74
+.
+<feline_en_15.png, id=22, 1927.2pt x 1084.05pt>
+File: feline_en_15.png Graphic file (type png)
+<use feline_en_15.png>
+Package pdftex.def Info: feline_en_15.png  used on input line 79. on input line
+ 79.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 79
+.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./bunny_ic_15.png> <./cube_bumpy.png> <./cube_bumpy_en_15.png> <./cube_bum
+py_ec_15.png> <./cube_bumpy_in_15.png> <./cube_bumpy_ic_15.png>]
+<feline_ec_15.png, id=26, 1927.2pt x 1084.05pt>
+File: feline_ec_15.png Graphic file (type png)
+<use feline_ec_15.png>
+Package pdftex.def Info: feline_ec_15.png  used on input line 84. on input line
+ 84.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 84
+.
+<feline_in_15.png, id=27, 1927.2pt x 1084.05pt>
+File: feline_in_15.png Graphic file (type png)
+<use feline_in_15.png>
+Package pdftex.def Info: feline_in_15.png  used on input line 89. on input line
+ 89.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 89
+.
+<feline_ic_15.png, id=28, 1927.2pt x 1084.05pt>
+File: feline_ic_15.png Graphic file (type png)
+<use feline_ic_15.png>
+Package pdftex.def Info: feline_ic_15.png  used on input line 94. on input line
+ 94.
+Package pdftex.def Info: Requested size: 221.0pt x 124.30748pt on input line 94
+.
+
+Underfull \vbox (badness 1776) has occurred while \output is active []
+
+ [3 <./feline.png> <./feline_en_15.png> <./feline_ec_15.png> <./feline_in_15.pn
+g> <./feline_ic_15.png>] (./report.aux) ) 
+Here is how much of TeX's memory you used:
+ 1568 strings out of 492995
+ 22725 string characters out of 6135073
+ 78165 words of memory out of 5000000
+ 5112 multiletter control sequences out of 15000+600000
+ 7280 words of font info for 26 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,7n,25p,446b,210s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b>
+Output written on report.pdf (3 pages, 5020454 bytes).
+PDF statistics:
+ 53 PDF objects out of 1000 (max. 8388607)
+ 26 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+

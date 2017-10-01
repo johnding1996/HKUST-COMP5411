@@ -656,7 +656,7 @@ void Mesh::computeVertexNormals() {
 
 void Mesh::umbrellaSmooth(bool cotangentWeights) {
 	/*====== Programming Assignment 1 ======*/
-	double lambda = 1;
+	double lambda = 0.5;
 
 	if (cotangentWeights) {
 		/**********************************************/
@@ -691,9 +691,9 @@ void Mesh::umbrellaSmooth(bool cotangentWeights) {
 				Eigen::Vector3f HEdge22 = inHEdge->next()->next()->end()->position() - inHEdge->next()->end()->position();
 				double cotangent2 = HEdge21.dot(HEdge22) / HEdge21.cross(HEdge22).norm();
 				sumWeights += (cotangent1 + cotangent2) / 2;
-				sumWeightedVectors += ((cotangent1 + cotangent2) / 2) * (outHEdge->end()->position() - curPosition);
+				sumWeightedVectors += ((cotangent1 + cotangent2) / 2) * (outHEdge->end()->position());
 			}
-			Eigen::Vector3f laplacian = sumWeightedVectors / sumWeights;
+			Eigen::Vector3f laplacian = sumWeightedVectors / sumWeights - curPosition;
 			curVertex->setPosition(curPosition + lambda * laplacian);
 		}
 
@@ -732,7 +732,7 @@ void Mesh::umbrellaSmooth(bool cotangentWeights) {
 
 void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 	/*====== Programming Assignment 1 ======*/
-	double lambda = 1;
+	double lambda = 0.5;
 
 	/* A sparse linear system Ax=b solver using the conjugate gradient method. */
 	auto fnConjugateGradient = [](const Eigen::SparseMatrix< float >& A,
@@ -760,7 +760,8 @@ void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 
 		Eigen::VectorXf r = b - A * x;
 		Eigen::VectorXf p = r;
-		for (int k=0; k<=maxIterations; k++) {
+        int k;
+		for (k=0; k<=maxIterations; k++) {
 			double alpha = r.norm() * r.norm() / (p.adjoint() * A * p);
 			Eigen::VectorXf nx = x;
 			nx += alpha * p;
@@ -773,7 +774,6 @@ void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 			p = nr + beta * p;
 			r = nr;
 		}
-
 	};
 
 	/* IMPORTANT:
@@ -849,7 +849,7 @@ void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 			x[i] = 0.0;
 		}
 
-		fnConjugateGradient(A, b, 10000, 0.0001, x);
+		fnConjugateGradient(A, b, 20, 1e-12, x);
 
 		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
 			Vertex* curVertex = *it;
@@ -907,7 +907,7 @@ void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 			x[i] = 0.0;
 		}
 
-		fnConjugateGradient(A, b, 10000, 0.00001, x);
+		fnConjugateGradient(A, b, 20, 1e-12, x);
 
 		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
 			Vertex* curVertex = *it;
