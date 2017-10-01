@@ -2,6 +2,8 @@
 #define MESH_H
 #include <Eigen/Dense>
 #include <vector>
+#include <list>
+#include <algorithm>
 #include <string>
 #include "util.h"
 

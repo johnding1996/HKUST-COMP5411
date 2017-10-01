@@ -507,6 +507,15 @@ std::vector< int > Mesh::collectMeshStats() {
 	/* Collect mesh information as listed above.
 	/**********************************************/
 
+	V = (int)mVertexList.size();
+	E = (int)mHEdgeList.size() / 2 + (int)mBHEdgeList.size();
+	F = (int)mFaceList.size();
+	B = countBoundaryLoops();
+	C = countConnectedComponents();
+	// By Euler formula
+	G = C - (V - E + F + B) / 2;
+
+
 	/*====== Programming Assignment 0 ======*/
 
 	std::vector< int > stats;
@@ -531,6 +540,29 @@ int Mesh::countBoundaryLoops() {
 	/* Helper function for Mesh::collectMeshStats()
 	/**********************************************/
 
+	std::vector< HEdge* > mBHEdgeListRemain(mBHEdgeList);
+	bool isTracing = false;
+	if (mBHEdgeListRemain.size()==0) { return 0; }
+	HEdge* curBHEdge = mBHEdgeListRemain.back();
+	while (!mBHEdgeListRemain.empty())
+	{
+		if (isTracing) {
+			curBHEdge = curBHEdge->next();
+			auto it = std::find(mBHEdgeListRemain.begin(), mBHEdgeListRemain.end(), curBHEdge);
+			if (it == mBHEdgeListRemain.end()) {
+				count++;
+				isTracing = false;
+			} else {
+				mBHEdgeListRemain.erase(it);
+			}
+
+		} else {
+			curBHEdge = mBHEdgeListRemain.back();
+			mBHEdgeListRemain.pop_back();
+			isTracing = true;
+		}
+	}
+
 	/*====== Programming Assignment 0 ======*/
 
 	return count;
@@ -550,6 +582,32 @@ int Mesh::countConnectedComponents() {
 	/* the mesh. (Hint: use a stack)
 	/**********************************************/
 
+	auto V = (int)mVertexList.size();
+	std::vector < bool > visited;
+	for(int i = 0; i < V; i++)
+		visited.push_back(false);
+	std::list< Vertex* > queue;
+	while (!std::all_of(std::begin(visited), std::end(visited), [](bool i) { return i; })) {
+		auto it = mVertexList.begin();
+		while (it != mVertexList.end() && visited[(*it)->index()]) { it++; };
+		visited[(*it)->index()] = true;
+		queue.push_back(*it);
+		while(!queue.empty()) {
+			Vertex* curVertex = queue.front();
+			queue.pop_front();
+			HEdge* firstHEdge = curVertex->halfEdge();
+			HEdge* curHEdge = firstHEdge;
+			do{
+				Vertex* nextVertex = curHEdge->end();
+				if (!visited[nextVertex->index()]) {
+					visited[nextVertex->index()] = true;
+					queue.push_back(nextVertex);
+				}
+				curHEdge = curHEdge->twin()->next();
+			} while (curHEdge != firstHEdge);
+		}
+		count++;
+	}
 
 	/*====== Programming Assignment 0 ======*/
 
@@ -571,6 +629,26 @@ void Mesh::computeVertexNormals() {
 
 	/*====== Programming Assignment 0 ======*/
 
+	for (auto it1=mVertexList.begin(); it1!=mVertexList.end(); it1++) {
+		Vertex* curVertex = *it1;
+		const Eigen::Vector3f& curPosition = curVertex->position();
+		Eigen::Vector3f curNorm(0,0,0);
+		std::vector < HEdge* > outHEdges;
+		outHEdges.push_back(curVertex->halfEdge());
+		while (outHEdges.back()->twin()->next()!=outHEdges[0]) {
+			outHEdges.push_back(outHEdges.back()->twin()->next());
+		}
+		for (auto it2=outHEdges.begin(); (it2+1)!=outHEdges.end(); it2++) {
+			Eigen::Vector3f dp1 = (*it2)->end()->position() - curPosition;
+			Eigen::Vector3f dp2 = curPosition - (*(it2+1))->end()->position();
+			Eigen::Vector3f cross = dp1.cross(dp2);
+			// Note no normalization here means weighted by area
+			curNorm += dp1.cross(dp2);
+		}
+		curNorm.normalize();
+		curVertex->setNormal(curNorm);
+	}
+
 	// Notify mesh shaders
 	setVertexNormalDirty(true);
 }
@@ -578,6 +656,7 @@ void Mesh::computeVertexNormals() {
 
 void Mesh::umbrellaSmooth(bool cotangentWeights) {
 	/*====== Programming Assignment 1 ======*/
+	double lambda = 1;
 
 	if (cotangentWeights) {
 		/**********************************************/
@@ -592,6 +671,32 @@ void Mesh::umbrellaSmooth(bool cotangentWeights) {
 		/* weights to avoid numerical issues.
 		/**********************************************/
 
+		for (auto it1=mVertexList.begin(); it1!=mVertexList.end(); it1++) {
+			Vertex* curVertex = *it1;
+			const Eigen::Vector3f& curPosition = curVertex->position();
+			std::vector < HEdge* > outHEdges;
+			outHEdges.push_back(curVertex->halfEdge());
+			while (outHEdges.back()->twin()->next()!=outHEdges[0]) {
+				outHEdges.push_back(outHEdges.back()->twin()->next());
+			}
+			Eigen::Vector3f sumWeightedVectors(0,0,0);
+			double sumWeights = 0.0;
+			for (auto it2=outHEdges.begin(); it2!=outHEdges.end(); it2++) {
+				HEdge* outHEdge = *it2;
+				Eigen::Vector3f HEdge11 = outHEdge->end()->position() - outHEdge->next()->end()->position();
+				Eigen::Vector3f HEdge12 = outHEdge->next()->next()->end()->position() - outHEdge->next()->end()->position();
+				double cotangent1 = HEdge11.dot(HEdge12) / HEdge11.cross(HEdge12).norm();
+				HEdge* inHEdge = outHEdge->twin();
+				Eigen::Vector3f HEdge21 = inHEdge->end()->position() - inHEdge->next()->end()->position();
+				Eigen::Vector3f HEdge22 = inHEdge->next()->next()->end()->position() - inHEdge->next()->end()->position();
+				double cotangent2 = HEdge21.dot(HEdge22) / HEdge21.cross(HEdge22).norm();
+				sumWeights += (cotangent1 + cotangent2) / 2;
+				sumWeightedVectors += ((cotangent1 + cotangent2) / 2) * (outHEdge->end()->position() - curPosition);
+			}
+			Eigen::Vector3f laplacian = sumWeightedVectors / sumWeights;
+			curVertex->setPosition(curPosition + lambda * laplacian);
+		}
+
 	} else {
 		/**********************************************/
 		/*          Insert your code here.            */
@@ -601,6 +706,21 @@ void Mesh::umbrellaSmooth(bool cotangentWeights) {
 		/* scheme for explicit mesh smoothing.
 		/**********************************************/
 
+		for (auto it1=mVertexList.begin(); it1!=mVertexList.end(); it1++) {
+			Vertex* curVertex = *it1;
+			const Eigen::Vector3f& curPosition = curVertex->position();
+			std::vector < HEdge* > outHEdges;
+			outHEdges.push_back(curVertex->halfEdge());
+			while (outHEdges.back()->twin()->next()!=outHEdges[0]) {
+				outHEdges.push_back(outHEdges.back()->twin()->next());
+			}
+			Eigen::Vector3f sumVectors(0,0,0);
+			for (auto it2=outHEdges.begin(); it2!=outHEdges.end(); it2++) {
+				sumVectors += (*it2)->end()->position();
+			}
+			Eigen::Vector3f laplacian = sumVectors / outHEdges.size() - curPosition;
+			curVertex->setPosition(curPosition + lambda * laplacian);
+		}
 	}
 
 	/*====== Programming Assignment 1 ======*/
@@ -612,6 +732,7 @@ void Mesh::umbrellaSmooth(bool cotangentWeights) {
 
 void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 	/*====== Programming Assignment 1 ======*/
+	double lambda = 1;
 
 	/* A sparse linear system Ax=b solver using the conjugate gradient method. */
 	auto fnConjugateGradient = [](const Eigen::SparseMatrix< float >& A,
@@ -636,6 +757,23 @@ void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 		/* method.
 		/* Hint: https://en.wikipedia.org/wiki/Biconjugate_gradient_method
 		/**********************************************/
+
+		Eigen::VectorXf r = b - A * x;
+		Eigen::VectorXf p = r;
+		for (int k=0; k<=maxIterations; k++) {
+			double alpha = r.norm() * r.norm() / (p.adjoint() * A * p);
+			Eigen::VectorXf nx = x;
+			nx += alpha * p;
+			if ((nx.norm()-x.norm()) < errorTolerance) { break; };
+			x = nx;
+			Eigen::VectorXf nr = r;
+			nr -= alpha * A * p;
+			double beta = nr.norm() / r.norm();
+			beta = beta * beta;
+			p = nr + beta * p;
+			r = nr;
+		}
+
 	};
 
 	/* IMPORTANT:
@@ -657,6 +795,71 @@ void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 		/* weights to avoid numerical issues.
 		/**********************************************/
 
+		auto V = (int)mVertexList.size();
+		Eigen::VectorXf b(3 * V);
+		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
+			Vertex* curVertex = *it;
+			for (int i=0; i<3; i++) {
+				b[curVertex->index() * 3 + i] = curVertex->position()[i];
+			}
+		}
+		typedef Eigen::Triplet<double> T;
+		std::vector< T > tripletList;
+		for(int i=0; i< 3 * V; i++) {
+			tripletList.push_back(T(i,i,1 + lambda));
+		}
+		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
+			Vertex* curVertex = *it;
+			std::vector < HEdge* > outHEdges;
+			int curIndex = curVertex->index();
+			outHEdges.push_back(curVertex->halfEdge());
+			while (outHEdges.back()->twin()->next()!=outHEdges[0]) {
+				outHEdges.push_back(outHEdges.back()->twin()->next());
+			}
+			std::vector < float > weights;
+			for (auto it2=outHEdges.begin(); it2!=outHEdges.end(); it2++) {
+				HEdge* outHEdge = *it2;
+				Eigen::Vector3f HEdge11 = outHEdge->end()->position() - outHEdge->next()->end()->position();
+				Eigen::Vector3f HEdge12 = outHEdge->next()->next()->end()->position() - outHEdge->next()->end()->position();
+				float cotangent1 = HEdge11.dot(HEdge12) / HEdge11.cross(HEdge12).norm();
+				HEdge* inHEdge = outHEdge->twin();
+				Eigen::Vector3f HEdge21 = inHEdge->end()->position() - inHEdge->next()->end()->position();
+				Eigen::Vector3f HEdge22 = inHEdge->next()->next()->end()->position() - inHEdge->next()->end()->position();
+				float cotangent2 = HEdge21.dot(HEdge22) / HEdge21.cross(HEdge22).norm();
+				weights.push_back((cotangent1 + cotangent2) / 2);
+			}
+			float sumWeights = 0.0;
+			std::for_each(weights.begin(), weights.end(), [&] (float w) {
+				sumWeights += w;
+			});
+			auto it3=weights.begin();
+			for (auto it2=outHEdges.begin(); it2!=outHEdges.end(); it2++) {
+				int nextIndex = (*it2)->end()->index();
+				float w = *it3;
+				for (int i=0; i<3; i++) {
+					tripletList.push_back(T(curIndex * 3 + i, nextIndex * 3 + i, -lambda * w / sumWeights));
+				}
+				it3++;
+			}
+		}
+		Eigen::SparseMatrix< float > A(3 * V,3 * V);
+		A.setFromTriplets(tripletList.begin(), tripletList.end());
+		Eigen::VectorXf x(3 * V);
+		for (int i=0; i<3 * V; i++) {
+			x[i] = 0.0;
+		}
+
+		fnConjugateGradient(A, b, 10000, 0.0001, x);
+
+		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
+			Vertex* curVertex = *it;
+			Eigen::Vector3f newPosition;
+			for (int i=0; i<3; i++) {
+				newPosition[i] = x[curVertex->index() * 3 + i];
+			}
+			curVertex->setPosition(newPosition);
+		}
+
 
 	} else {
 		/**********************************************/
@@ -668,6 +871,52 @@ void Mesh::implicitUmbrellaSmooth(bool cotangentWeights) {
 		/* the above fnConjugateGradient for solving
 		/* sparse linear systems.
 		/**********************************************/
+
+		auto V = (int)mVertexList.size();
+		Eigen::VectorXf b(3 * V);
+		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
+			Vertex* curVertex = *it;
+			for (int i=0; i<3; i++) {
+				b[curVertex->index() * 3 + i] = curVertex->position()[i];
+			}
+		}
+		typedef Eigen::Triplet<double> T;
+		std::vector< T > tripletList;
+		for(int i=0; i< 3 * V; i++) {
+			tripletList.push_back(T(i,i,1 + lambda));
+		}
+		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
+			Vertex* curVertex = *it;
+			std::vector < HEdge* > outHEdges;
+			int curIndex = curVertex->index();
+			outHEdges.push_back(curVertex->halfEdge());
+			while (outHEdges.back()->twin()->next()!=outHEdges[0]) {
+				outHEdges.push_back(outHEdges.back()->twin()->next());
+			}
+			for (auto it2=outHEdges.begin(); it2!=outHEdges.end(); it2++) {
+				int nextIndex = (*it2)->end()->index();
+				for (int i=0; i<3; i++) {
+					tripletList.push_back(T(curIndex * 3 + i, nextIndex * 3 + i, -lambda / outHEdges.size()));
+				}
+			}
+		}
+		Eigen::SparseMatrix< float > A(3 * V,3 * V);
+		A.setFromTriplets(tripletList.begin(), tripletList.end());
+		Eigen::VectorXf x(3 * V);
+		for (int i=0; i<3 * V; i++) {
+			x[i] = 0.0;
+		}
+
+		fnConjugateGradient(A, b, 10000, 0.00001, x);
+
+		for (auto it=mVertexList.begin(); it!=mVertexList.end(); it++) {
+			Vertex* curVertex = *it;
+			Eigen::Vector3f newPosition;
+			for (int i=0; i<3; i++) {
+				newPosition[i] = x[curVertex->index() * 3 + i];
+			}
+			curVertex->setPosition(newPosition);
+		}
 
 	}
 

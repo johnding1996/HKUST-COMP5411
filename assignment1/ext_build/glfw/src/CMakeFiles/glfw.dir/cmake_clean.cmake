@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "libglfw.pdb"
-  "libglfw.so"
   "libglfw.so.3.2"
+  "libglfw.so"
   "libglfw.so.3"
 )
 

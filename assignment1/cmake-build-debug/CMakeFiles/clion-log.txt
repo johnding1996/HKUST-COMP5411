@@ -36,10 +36,10 @@
 -- Looking for IceConnectionNumber in ICE
 -- Looking for IceConnectionNumber in ICE - found
 -- Found X11: /usr/lib/x86_64-linux-gnu/libX11.so
-CMake Error at ext/glfw/CMakeLists.txt:206 (message):
-  The RandR library and headers were not found
-
-
--- Configuring incomplete, errors occurred!
-See also "/home/mcding/johnding1996/COMP5411/assignment1/cmake-build-debug/CMakeFiles/CMakeOutput.log".
-See also "/home/mcding/johnding1996/COMP5411/assignment1/cmake-build-debug/CMakeFiles/CMakeError.log".
+-- Performing Test HAS_CPP14_FLAG
+-- Performing Test HAS_CPP14_FLAG - Success
+-- Performing Test HAS_CPP11_FLAG
+-- Performing Test HAS_CPP11_FLAG - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/mcding/johnding1996/COMP5411/assignment1
