@@ -1,0 +1,31 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF-8
+
+
+@InProceedings{1309231,
+  Title                    = {Real-time rendering of soap bubbles taking into account light interference},
+  Author                   = {K. Iwasaki and K. Matsuzawa and T. Nishita},
+  Booktitle                = {Proceedings Computer Graphics International, 2004.},
+  Year                     = {2004},
+  Month                    = {June},
+  Pages                    = {344-348},
+
+  Abstract                 = {In the field of computer graphics, simulation of physical phenomena is of great interest. We focus on the optical effects of soap bubbles. Soap bubbles have fascinating coloration and interesting physical properties. Therefore they are useful for the entertainment such as movies and games. Soap bubbles change their shapes by surface tension and external forces, and therefore their surface thickness also changes. Since the thickness of the soap bubble is several hundred nanometers, interference of the light occurs. This paper proposes a fast rendering method for the soap bubbles taking into account light interference and dynamics. In our method, the reflectivities of the thin film that is the cause of the light interference are calculated in advance and stored as textures. This makes it possible to render the de-formable soap bubbles in real-time},
+  Doi                      = {10.1109/CGI.2004.1309231},
+  ISSN                     = {1530-1052},
+  Keywords                 = {computer animation;image texture;light interference;rendering (computer graphics);computer graphics;graphics hardware;light interference;real-time animation;real-time rendering;soap bubbles;surface tension;surface thickness;Computational modeling;Computer graphics;Computer simulation;Interference;Motion pictures;Optical films;Reflectivity;Rendering (computer graphics);Shape;Surface tension}
+}
+
+@Misc{bubblebase,
+  Title                    = {three.js bubble demo with fresnel effect},
+
+  Author                   = {three.js},
+  HowPublished             = {"\url{https://threejs.org/examples/webgl_materials_shaders_fresnel.html}"},
+  Month                    = {10},
+  Note                     = {[Online; accessed 09-Nov-2017]},
+  Year                     = {2017},
+
+  Owner                    = {three.js},
+  Timestamp                = {2017.11.09}
+}
+
