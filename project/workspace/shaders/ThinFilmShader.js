@@ -32,8 +32,8 @@ THREE.ThinFilmShader = {
         "float reflectivityP = (effectiveCosine - mRefractiveIndex * cosine)/(effectiveCosine + mRefractiveIndex * cosine);",
         "reflectivityP = reflectivityP * reflectivityP;",
 
-        "float rand = fract(sin(dot(normalize(worldNormal).xy, vec2(1.0, 1.0)) * PI));",
-        "float thickness = mAverageThickness * (1.0 - normalize(worldNormal).z * rand  * mThicknessRange);",
+        "float direction = fract(sin(dot(normalize(worldNormal).xy, vec2(1.0, 1.0)) * PI));",
+        "float thickness = mAverageThickness * (1.0 - normalize(worldNormal).z * direction  * mThicknessRange);",
         "float cosineDelta[3];",
         "cosineDelta[0] = cos(4.0 * PI * mRefractiveIndex * thickness / mWaveLength[0] * cosine);",
         "cosineDelta[1] = cos(4.0 * PI * mRefractiveIndex * thickness / mWaveLength[1] * cosine);",
