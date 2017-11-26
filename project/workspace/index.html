@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rendering Thin Film Interference on Soap Bubbles</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            background: #000;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+            overflow: hidden;
+        }
+
+        #info {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            color: #ffffff;
+            padding: 5px;
+            font-family: Monospace;
+            font-size: 13px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        a {
+            color: #ffffff;
+        }
+
+        #oldie a {
+            color: #0b0
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="info">COMP 5411 Rendering Project, Mu Cong Ding 20323458</div>
+
+<script src="build/three.min.js"></script>
+<script src='build/dat.gui.min.js'></script>
+<script src="js/Detector.js"></script>
+<script src="shaders/ThinFilmShader.js"></script>
+
+<script>
+
+    if (!Detector.webgl) Detector.addGetWebGLMessage();
+
+    var container;
+
+    var camera, scene, renderer, shader;
+
+    var spheres = [];
+
+    var numSpheres = 100;
+
+    var mouseX = 0, mouseY = 0;
+
+    var windowHalfX = window.innerWidth / 2;
+    var windowHalfY = window.innerHeight / 2;
+
+    var options = {
+        animation: {
+            halfRange: 3000,
+            speed: 5
+        },
+        camera: {
+            sensitivity: 1.5
+        },
+        shader: {
+            averageThickness: 1600,
+            thicknessRange:0.5,
+            refractiveIndex: 1.333,
+            effectiveRefractiveIndex: 1.007,
+            interferenceMagnifier: 2.0
+        }
+    };
+
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+    setup();
+    construct();
+    addGUI();
+    animate();
+
+    function setup() {
+        container = document.createElement('div');
+        document.body.appendChild(container);
+        window.addEventListener('resize', onWindowResize, false);
+    }
+
+    function construct() {
+        // Create Scene
+        scene = new THREE.Scene();
+        scene.matrixAutoUpdate = false;
+
+        // Create Camera
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 100000);
+        camera.position.z = 3200;
+
+        // Load Textures
+        var textureTypes = ["Bridge2", "Park2", "Park3Med", "skybox", "skyboxson25deg", "SwedishRoyalCastle"];
+        var textureType = textureTypes[0];
+        var path = "textures/cube/" + textureType + "/";
+        var format = '.jpg';
+        var urls = [
+            path + 'px' + format, path + 'nx' + format,
+            path + 'py' + format, path + 'ny' + format,
+            path + 'pz' + format, path + 'nz' + format
+        ];
+        var textureCube = new THREE.CubeTextureLoader().load(urls);
+        textureCube.format = THREE.RGBFormat;
+        scene.background = textureCube;
+
+        // Define Bubble Geometry and Shaders
+        var geometry = new THREE.SphereGeometry(100, 64, 64);
+        shader = THREE.ThinFilmShader;
+        var material = new THREE.ShaderMaterial({
+            uniforms: {
+                mWaveLength: { type:"fv1", value: [660, 510, 450] },
+                mAverageThickness: { type:"f", value: options.shader.averageThickness },
+                mRefractiveIndex : { type:"f", value: options.shader.refractiveIndex },
+                mThicknessRange : { type:"f", value: options.shader.thicknessRange },
+                mEffectiveRelactiveIndex: { type:"f", value: options.shader.effectiveRefractiveIndex },
+                mInterferenceMagnifier: { type:"f", value: options.shader.interferenceMagnifier },
+                tCube: { value: null }
+            },
+            vertexShader: shader.vertexShader,
+            fragmentShader: shader.fragmentShader
+        });
+
+        // Load Texture to Shader Uniform
+        var uniforms = THREE.UniformsUtils.clone(shader.uniforms);
+        uniforms.tCube = textureCube;
+
+        // Push Spheres into the Scene
+        for (var i = 0; i < numSpheres; i++) {
+            var mesh = new THREE.Mesh(geometry, material);
+            mesh.position.x = Math.random() * 2 * options.animation.halfRange - options.animation.halfRange;
+            mesh.position.y = Math.random() * 2 * options.animation.halfRange - options.animation.halfRange;
+            mesh.position.z = Math.random() * 2 * options.animation.halfRange - options.animation.halfRange;
+            mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
+            scene.add(mesh);
+            spheres.push(mesh);
+        }
+
+        renderer = new THREE.WebGLRenderer({antialias: false});
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+    }
+
+    function addGUI(){
+        var gui = new dat.GUI({width: 600});
+        var animationOptions = gui.addFolder('Animation');
+        animationOptions.add(options.animation, 'speed', 0, 10, 1).name("Bubble Moving Speed").listen();
+        animationOptions.add(options.animation, 'halfRange', 1000, 7000, 1).name("Bubble Spreading Range").listen();
+        animationOptions.open();
+        var cameraOptions = gui.addFolder('Camera');
+        cameraOptions.add(options.camera, "sensitivity", 0, 3, 0.1).name("Mouse Sensitivity").listen();
+        cameraOptions.add(camera.position, "x", -10000, 10000).name("Camera X").listen();
+        cameraOptions.add(camera.position, "y", -10000, 10000).name("Camera Y").listen();
+        cameraOptions.add(camera.position, "z", 0, 10000).name("Camera Z").listen();
+        cameraOptions.open();
+        var shaderOptions = gui.addFolder("Shader");
+        shaderOptions.add(options.shader, "averageThickness", 0, 2000, 1).name("Average Thickness (nm)").onChange(function() {
+            for (var i = 0; i < numSpheres; i++) {spheres[i].material.uniforms.mAverageThickness.value = options.shader.averageThickness;}
+        });
+        shaderOptions.add(options.shader, "thicknessRange", 0, 1.0, 0.01).name("Normalized Thickness Varying Range").onChange(function() {
+            for (var i = 0; i < numSpheres; i++) {spheres[i].material.uniforms.mThicknessRange.value = options.shader.thicknessRange;}
+        });
+        shaderOptions.add(options.shader, "refractiveIndex", 1.0, 1.5, 0.01).name("Refractive Index").onChange(function() {
+            for (var i = 0; i < numSpheres; i++) {spheres[i].material.uniforms.mRefractiveIndex.value = options.shader.refractiveIndex;}
+        });
+        shaderOptions.add(options.shader, "effectiveRefractiveIndex", 1.0, 1.05, 0.001).name("Effective Refractive Index of Transmitting 2 Times").onChange(function() {
+            for (var i = 0; i < numSpheres; i++) {spheres[i].material.uniforms.mEffectiveRelactiveIndex.value = options.shader.effectiveRefractiveIndex;}
+        });
+        shaderOptions.add(options.shader, "interferenceMagnifier", 1.0, 8.0, 0.1).name("Interference Magnification Factor").onChange(function() {
+            for (var i = 0; i < numSpheres; i++) {spheres[i].material.uniforms.mInterferenceMagnifier.value = options.shader.interferenceMagnifier;}
+        });
+        shaderOptions.open();
+    }
+
+    function onWindowResize() {
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function onDocumentMouseMove(event) {
+        mouseX = ( event.clientX - windowHalfX ) * 10;
+        mouseY = ( event.clientY - windowHalfY ) * 10;
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        render();
+    }
+
+    function render() {
+        var timer = 0.00001 * options.animation.speed * Date.now();
+        camera.position.x += ( mouseX - camera.position.x ) * 0.01 * options.camera.sensitivity;
+        camera.position.y += ( -mouseY - camera.position.y ) * 0.01 * options.camera.sensitivity;
+        camera.lookAt(scene.position);
+        for (var i = 0, il = spheres.length; i < il; i++) {
+            var sphere = spheres[i];
+            sphere.position.x = options.animation.halfRange * Math.sin(timer + i);
+            sphere.position.y = options.animation.halfRange * Math.sin(timer + i * 1.1 + 0.1);
+            sphere.position.z = options.animation.halfRange * Math.sin(timer + i * 1.2 + 0.2);
+        }
+        renderer.render(scene, camera);
+    }
+
+</script>
+
+</body>
+</html>
