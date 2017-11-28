@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.9.15)  26 NOV 2017 22:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.9.15)  27 NOV 2017 18:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1006,74 +1006,75 @@ Overfull \vbox (7.20927pt too high) detected at line 195
 
 ] [10
 
-] [11
-
-] [12
-
-] [13
-
 ]
-<color_code.png, id=489, 717.68124pt x 35.13126pt>
+<color_code.png, id=404, 717.68124pt x 35.13126pt>
 File: color_code.png Graphic file (type png)
 <use color_code.png>
-Package pdftex.def Info: color_code.png  used on input line 267. on input line 
-267.
+Package pdftex.def Info: color_code.png  used on input line 235. on input line 
+235.
 Package pdftex.def Info: Requested size: 342.2953pt x 16.75612pt on input line 
-267.
-<color_wavelength.png, id=490, 607.26875pt x 115.43124pt>
+235.
+<color_wavelength.png, id=405, 607.26875pt x 115.43124pt>
 File: color_wavelength.png Graphic file (type png)
 <use color_wavelength.png>
-Package pdftex.def Info: color_wavelength.png  used on input line 267. on input
- line 267.
+Package pdftex.def Info: color_wavelength.png  used on input line 235. on input
+ line 235.
 Package pdftex.def Info: Requested size: 239.60567pt x 45.54463pt on input line
- 267.
- [14
+ 235.
+ [11
 
  <./color_code.png> <./color_wavelength.png>]
-<thickness_drifting.png, id=520, 349.305pt x 317.185pt>
+<thickness_drifting.png, id=435, 349.305pt x 317.185pt>
 File: thickness_drifting.png Graphic file (type png)
 <use thickness_drifting.png>
-Package pdftex.def Info: thickness_drifting.png  used on input line 298. on inp
-ut line 298.
+Package pdftex.def Info: thickness_drifting.png  used on input line 267. on inp
+ut line 267.
 Package pdftex.def Info: Requested size: 68.45801pt x 62.16298pt on input line 
-298.
-<thickness_sloshing.png, id=521, 348.30125pt x 318.18875pt>
+267.
+<thickness_sloshing.png, id=436, 348.30125pt x 318.18875pt>
 File: thickness_sloshing.png Graphic file (type png)
 <use thickness_sloshing.png>
-Package pdftex.def Info: thickness_sloshing.png  used on input line 298. on inp
-ut line 298.
+Package pdftex.def Info: thickness_sloshing.png  used on input line 267. on inp
+ut line 267.
 Package pdftex.def Info: Requested size: 68.45801pt x 62.53935pt on input line 
-298.
-<thickness_code.png, id=522, 1106.1325pt x 39.14626pt>
+267.
+<thickness_code.png, id=437, 1106.1325pt x 39.14626pt>
 File: thickness_code.png Graphic file (type png)
 <use thickness_code.png>
-Package pdftex.def Info: thickness_code.png  used on input line 298. on input l
-ine 298.
+Package pdftex.def Info: thickness_code.png  used on input line 267. on input l
+ine 267.
 Package pdftex.def Info: Requested size: 342.2953pt x 12.1137pt on input line 2
-98.
- [15
+67.
+ [12
 
  <./thickness_drifting.png> <./thickness_sloshing.png> <./thickness_code.png>]
-<vertex_shader.png, id=554, 1295.84125pt x 823.075pt>
+<vertex_shader.png, id=469, 1295.84125pt x 823.075pt>
 File: vertex_shader.png Graphic file (type png)
 <use vertex_shader.png>
-Package pdftex.def Info: vertex_shader.png  used on input line 312. on input li
-ne 312.
+Package pdftex.def Info: vertex_shader.png  used on input line 281. on input li
+ne 281.
 Package pdftex.def Info: Requested size: 273.83728pt x 173.93092pt on input lin
-e 312.
- [16
+e 281.
+ [13
 
  <./vertex_shader.png>]
-<fragment_shader.png, id=583, 920.43875pt x 334.24875pt>
+<fragment_shader.png, id=500, 920.43875pt x 334.24875pt>
 File: fragment_shader.png Graphic file (type png)
 <use fragment_shader.png>
-Package pdftex.def Info: fragment_shader.png  used on input line 323. on input 
-line 323.
+Package pdftex.def Info: fragment_shader.png  used on input line 292. on input 
+line 292.
 Package pdftex.def Info: Requested size: 273.83728pt x 99.44406pt on input line
- 323.
- [17
+ 292.
+ [14
 
- <./fragment_shader.png>] [18
+ <./fragment_shader.png>] [15
+
+]
+[16
+
+] [17
+
+] [18
 
 ] [19
 
@@ -1081,10 +1082,10 @@ Package pdftex.def Info: Requested size: 273.83728pt x 99.44406pt on input line
 <reference.png, id=668, 443.6575pt x 177.66376pt>
 File: reference.png Graphic file (type png)
 <use reference.png>
-Package pdftex.def Info: reference.png  used on input line 361. on input line 3
-61.
+Package pdftex.def Info: reference.png  used on input line 362. on input line 3
+62.
 Package pdftex.def Info: Requested size: 273.83728pt x 109.657pt on input line 
-361.
+362.
  [20
 
  <./reference.png>]
@@ -1097,13 +1098,13 @@ Package pdftex.def Info: Requested size: 273.83728pt x 109.657pt on input line
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 366.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 366.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 365.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 366.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 366.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: F52AACE1B0235882204AA37F2AFD5017;909.
+(rerunfilecheck)             Checksum: 780D9E389CAC127DDA3C6176BB67AAFF;909.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1132,7 +1133,7 @@ cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on presentation.pdf (20 pages, 714413 bytes).
+Output written on presentation.pdf (20 pages, 714427 bytes).
 PDF statistics:
  762 PDF objects out of 1000 (max. 8388607)
  687 compressed objects within 7 object streams

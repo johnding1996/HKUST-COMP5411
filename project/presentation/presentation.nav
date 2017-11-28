@@ -22,36 +22,36 @@
 \headcommand {\beamer@subsectionentry {0}{1}{3}{9}{The Shading Equation}}\headcommand {\beamer@subsectionpages {7}{8}}
 \headcommand {\slideentry {1}{3}{1}{9/9}{The Shading Equation}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\sectionentry {2}{Live Demo}{10}{Live Demo}{0}}
+\headcommand {\sectionentry {2}{The Shaders}{10}{The Shaders}{0}}
 \headcommand {\beamer@sectionpages {3}{9}}
 \headcommand {\beamer@subsectionpages {9}{9}}
 \headcommand {\slideentry {2}{0}{1}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{11}{Demonstration}}\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\slideentry {2}{1}{1}{11/11}{Demonstration}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{11}{Color and Wavelength}}\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {2}{1}{1}{11/11}{Color and Wavelength}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{12}{Summary of Observations}}\headcommand {\beamer@subsectionpages {11}{11}}
-\headcommand {\slideentry {2}{2}{1}{12/12}{Summary of Observations}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{12}{Thickness Distribution}}\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\slideentry {2}{2}{1}{12/12}{Thickness Distribution}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\sectionentry {3}{The Shaders}{13}{The Shaders}{0}}
-\headcommand {\beamer@sectionpages {10}{12}}
-\headcommand {\beamer@subsectionpages {12}{12}}
-\headcommand {\slideentry {3}{0}{1}{13/13}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{13}{Following the Physics}}\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\slideentry {2}{3}{1}{13/13}{Following the Physics}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{14}{Color and Wavelength}}\headcommand {\beamer@subsectionpages {13}{13}}
-\headcommand {\slideentry {3}{1}{1}{14/14}{Color and Wavelength}{0}}
+\headcommand {\slideentry {2}{3}{2}{14/14}{Following the Physics}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{15}{Thickness Distribution}}\headcommand {\beamer@subsectionpages {14}{14}}
-\headcommand {\slideentry {3}{2}{1}{15/15}{Thickness Distribution}{0}}
+\headcommand {\sectionentry {3}{Live Demo}{15}{Live Demo}{0}}
+\headcommand {\beamer@sectionpages {10}{14}}
+\headcommand {\beamer@subsectionpages {13}{14}}
+\headcommand {\slideentry {3}{0}{1}{15/15}{}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{16}{Following the Physics}}\headcommand {\beamer@subsectionpages {15}{15}}
-\headcommand {\slideentry {3}{3}{1}{16/16}{Following the Physics}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{16}{Demonstration}}\headcommand {\beamer@subsectionpages {15}{15}}
+\headcommand {\slideentry {3}{1}{1}{16/16}{Demonstration}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {3}{3}{2}{17/17}{Following the Physics}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{17}{Summary of Observations}}\headcommand {\beamer@subsectionpages {16}{16}}
+\headcommand {\slideentry {3}{2}{1}{17/17}{Summary of Observations}{0}}
 \headcommand {\beamer@framepages {17}{17}}
 \headcommand {\sectionentry {4}{Challenges, Result, and Future Work}{18}{Challenges, Result, and Future Work}{0}}
-\headcommand {\beamer@sectionpages {13}{17}}
-\headcommand {\beamer@subsectionpages {16}{17}}
+\headcommand {\beamer@sectionpages {15}{17}}
+\headcommand {\beamer@subsectionpages {17}{17}}
 \headcommand {\slideentry {4}{0}{1}{18/18}{}{0}}
 \headcommand {\beamer@framepages {18}{18}}
 \headcommand {\beamer@subsectionentry {0}{4}{1}{19}{Challenges and Result}}\headcommand {\beamer@subsectionpages {18}{18}}
