@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.9.15)  27 NOV 2017 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.9.15)  28 NOV 2017 09:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1104,7 +1104,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 366.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 366.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 366.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 780D9E389CAC127DDA3C6176BB67AAFF;909.
+(rerunfilecheck)             Checksum: 16110F9F18C349FD64875902553FBF60;908.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1133,7 +1133,7 @@ cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on presentation.pdf (20 pages, 714427 bytes).
+Output written on presentation.pdf (20 pages, 714401 bytes).
 PDF statistics:
  762 PDF objects out of 1000 (max. 8388607)
  687 compressed objects within 7 object streams

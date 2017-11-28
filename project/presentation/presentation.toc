@@ -1,7 +1,7 @@
 \beamer@sectionintoc {1}{Background Theory}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{Introduction}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{Physics Background}{7}{0}{1}
-\beamer@subsectionintoc {1}{3}{The Shading Equation}{9}{0}{1}
+\beamer@subsectionintoc {1}{3}{The Shading Formula}{9}{0}{1}
 \beamer@sectionintoc {2}{The Shaders}{10}{0}{2}
 \beamer@subsectionintoc {2}{1}{Color and Wavelength}{11}{0}{2}
 \beamer@subsectionintoc {2}{2}{Thickness Distribution}{12}{0}{2}
